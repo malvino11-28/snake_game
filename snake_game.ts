@@ -22,9 +22,16 @@ function createMap({ array, food }: mapProps) {
     }
     array.push(newLine);
   }
-  const arraySize = array.length;
 
-  console.log(arraySize);
+  const totalColumns = array[0].length;
+  const arraySize = array.length * array[0].length;
+
+  const randomFoodPosition = Math.floor(Math.random() * arraySize);
+
+  const line = Math.floor(randomFoodPosition / totalColumns);
+  const column = randomFoodPosition % totalColumns;
+
+  array[line].splice(column, 1, food);
 }
 
 const CompleteMap: Array<orientationMapProps | string>[] = [];
